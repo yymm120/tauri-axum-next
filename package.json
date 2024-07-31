@@ -1,0 +1,25 @@
+{
+  "name": "next-tauri",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "next-dev": "pnpm --filter=\"src-next\" dev",
+    "next-start": "cross-env BROWSER=none pnpm --filter=\"src-next\" start",
+    "next-build": "pnpm --filter=\"src-next\" build",
+    "next-lint": "pnpm --filter=\"src-next\" lint",
+    "tauri": "tauri",
+    "tauri-build": "tauri build",
+    "dev": "tauri dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20",
+    "@tauri-apps/cli": "^1.6.0",
+    "cross-env": "^7.0.3",
+    "serve": "^14.2.3",
+    "typescript": "^5"
+  }
+}

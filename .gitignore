@@ -1,0 +1,9 @@
+/target
+
+out
+node_modules
+
+.next
+target
+dist
+.env

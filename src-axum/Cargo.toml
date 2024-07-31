@@ -1,0 +1,23 @@
+[package]
+name = "src-axum"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.7.5", features = ["multipart"] }
+futures = "0.3.30"
+tokio = { version = "1.39.2", features = ["full"] }
+tokio-util = { version = "0.7.11", features = ["io"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+
+# -- Json
+serde = { version = "1", features = ["derive"] }
+# -- Data
+sqlx = { version = "0.6", features = [ "runtime-tokio-rustls", "postgres", "uuid", "time", "macros" ] }
+# -- Graphql
+async-graphql = "7.0.7"
+async-graphql-axum = "7.0.7"
+serde_json = "1.0.121"
+serde_with = "3.9.0"
+dotenv = "0.15.0"
