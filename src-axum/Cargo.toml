@@ -1,3 +1,7 @@
+[profile.release]
+strip = true
+lto = true
+
 [package]
 name = "src-axum"
 version = "0.1.0"
