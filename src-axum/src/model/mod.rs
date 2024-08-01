@@ -40,4 +40,12 @@ impl ModelManager {
         let db_pool = create_db_pool(db_url).await?;
         Ok(ModelManager { db_pool })
     }
+
+    pub async fn app_dev_pool() -> Result<Self> {
+        dotenv().ok();
+        let db_url = env::var("APP_DEV_DATABASE_URL")
+            .expect("Expected Database URL..!");
+        let db_pool = create_db_pool(db_url).await?;
+        Ok(ModelManager { db_pool })
+    }
 }

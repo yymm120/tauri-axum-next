@@ -1,6 +1,7 @@
 use sqlx::{postgres::PgPoolOptions, PgPool, Error};
-
+use tokio::sync::OnceCell;
 use crate::model::user::{User, UserInfo};
+use crate::model::ModelManager;
 
 
 #[derive(Clone)]
@@ -10,10 +11,17 @@ pub struct UserService {
 
 impl UserService {
     pub async fn new() -> Result<Self, Error> {
-        let pool = PgPoolOptions::new()
-            .max_connections(5)
-            .connect("postgresql://postgres:@localhost/postgres")
-            .await?;
+        static INIT: OnceCell<PgPool> = OnceCell::const_new();
+	    INIT.get_or_init(|| async {
+            let ModelManager { pool } = ModelManager::app_dev_pool();
+            pool
+	    })
+	    .await;
+        Ok(Self {pool})
+    }
+
+    pub async fn new_force() -> Result<Self, Error> {
+        let ModelManager { pool } = ModelManager::app_dev_pool();
         Ok(Self {pool})
     }
 
