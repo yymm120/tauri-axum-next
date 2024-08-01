@@ -14,40 +14,31 @@ services:
       PGDATA: /data/postgres
     volumes:
       - ./sql/:/docker-entrypoint-initdb.d/
-    networks:
-      - db_network
-      - app
     command:
       -c shared_buffers=256MB
       -c max_connections=200
       -c listen_addresses='*'
   
-  pgadmin:
-    container_name: pgadmin_container
-    image: sss
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    ports:
-      - "${PGADMIN_PORT:-5050}:80"
-    networks:
-      - db_network
+#  pgadmin:
+#    container_name: pgadmin_container
+#    image: sss
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+#      PGADMIN_CONFIG_SERVER_MODE: 'False'
+#    ports:
+#      - "${PGADMIN_PORT:-5050}:80"
+#    networks:
+#      - db_network
 
   rust_app:
-    image: rust_app:latest
+    image: tauri-next:latest
+    container_name: rust_app_container
     ports:
       - "3333:3333"
     environment:
       DATABASE_URL: postgresql://app_user:dev_only_pwd@postgres:5432/app_db
     depends_on:
       - postgres
-    networks:
-      - app_network
 
-networks:
-  db_network:
-    driver: bridge
-  app_network:
-    driver: bridge
 
