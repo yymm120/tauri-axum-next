@@ -8,7 +8,7 @@ pub type Result<T> = core::result::Result<T, Error>;
 #[serde_as]
 #[derive(Debug, Serialize)]
 pub enum Error {
-    ServiceError { entity: &'static str, id: i64 },
+    Service { entity: &'static str, id: i64 },
     Model(model::Error),
     Sqlx(#[serde_as(as = "DisplayFromStr")] sqlx::Error),
 }

@@ -26,7 +26,7 @@ impl Application {
             address,
             port: configuration.application.port,
             settings: configuration,
-            database_state: database_state,
+            database_state,
         })
     }
 
