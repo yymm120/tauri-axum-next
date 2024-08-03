@@ -7,7 +7,7 @@ pub const LOCAL_LC: &str = "local";
 pub const DOT_YAML_LC: &str = ".yaml";
 pub const LOCAL_YAML_LC: &str = "local.yaml";
 pub const BASE_LC: &str = "base";
-pub const BASE_YAML_LC: & str = "base.yaml";
+pub const BASE_YAML_LC: &str = "base.yaml";
 
 // UC == UPPER_CASE 大写
 pub const APP_UC: &str = "APP";
