@@ -6,7 +6,6 @@ use sqlx::postgres::{PgConnectOptions, PgSslMode};
 
 use crate::constants::settings;
 
-
 #[derive(serde::Deserialize, Clone, Debug)]
 pub struct Settings {
     pub database: DatabaseSettings,
@@ -113,4 +112,3 @@ impl TryFrom<String> for Environment {
         }
     }
 }
-

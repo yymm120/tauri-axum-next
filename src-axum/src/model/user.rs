@@ -7,7 +7,7 @@ pub struct User {
     pub username: String,
     pub occupation: Option<String>,
     pub email: Option<String>,
-    pub phone: Option<String>
+    pub phone: Option<String>,
 }
 
 #[derive(Deserialize, Serialize)]
@@ -15,5 +15,5 @@ pub struct UserInfo {
     pub username: String,
     pub occupation: Option<String>,
     pub email: Option<String>,
-    pub phone: Option<String>
+    pub phone: Option<String>,
 }

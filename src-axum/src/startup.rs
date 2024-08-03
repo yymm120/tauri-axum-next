@@ -34,4 +34,3 @@ impl Application {
         self.port
     }
 }
-

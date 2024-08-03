@@ -1,19 +1,23 @@
-mod model;
-mod service;
-mod handler;
 mod configuration;
-mod startup;
 mod constants;
 mod error;
+mod handler;
+mod model;
+mod service;
+mod startup;
 
-use axum::{routing::{delete, get, post, put}, Extension, Router};
+use crate::handler::user_handler::{
+    create_user, delete_user, get_user_by_id, list_users, update_user,
+};
+use axum::{
+    routing::{delete, get, post, put},
+    Extension, Router,
+};
 use configuration::get_configuration;
+use service::user_service::UserService;
 use startup::Application;
 use tracing::info;
 use tracing_subscriber::EnvFilter;
-use service::user_service::UserService;
-use crate::handler::user_handler::{update_user, get_user_by_id, list_users, create_user, delete_user};
-
 
 #[tokio::main]
 async fn main() {
@@ -28,11 +32,10 @@ async fn main() {
     let configuration = get_configuration().expect("Failed to read configuration.");
 
     let application = Application::build(configuration.clone())
-            .await
-            .expect("create application service occur error!");
+        .await
+        .expect("create application service occur error!");
 
     run(application).await;
-
 }
 pub async fn run(application: Application) {
     let service = UserService::new().await.unwrap();
@@ -46,7 +49,9 @@ pub async fn run(application: Application) {
         .layer(Extension(service))
         .with_state(application.clone());
 
-    let listenner = tokio::net::TcpListener::bind(application.address).await.unwrap();
+    let listenner = tokio::net::TcpListener::bind(application.address)
+        .await
+        .unwrap();
 
     tracing::info!("Stared server!!!");
     axum::serve(listenner, app).await.unwrap()
