@@ -1,0 +1,23 @@
+
+# setting priority
+# environment > configuration
+[env]
+# environment: 'local' or 'production'
+APP_ENVIRONMENT="local"
+
+# LOG: 'project_name=info/debug/warning/error'
+RUST_LOG="src_axum=debug"
+
+# DB
+SERVICE_DB_URL="postgres://app_user:dev_only_pwd@124.222.48.193/app_db"
+SERVICE_PWD_KEY="CKUGFOD9_2Qf6Pn3ZFRYgPYb8ht4vKqEG9PGMXTB7497bT0367DjoaD6ydFnEVaIRda0kKeBZVCT5Hb62m2sCA"
+SERVICE_TOKEN_KEY="9FoHBmkyxbgu_xFoQK7e0jz3RMNVJWgfvbVn712FBNH9LLaAWS3CS6Zpcg6RveiObvCUb6a2z-uAiLjhLh2igw"
+SERVICE_TOKEN_DURATION_SEC="1800" # 30 minutes
+
+# DB
+POSTGRES_DATABASE_URL="postgres://postgres:postgres@124.222.48.193/postgres"
+APP_DEV_DATABASE_URL="postgres://app_user:dev_only_pwd@124.222.48.193/app_db"
+
+
+# Web Folder
+SERVICE_WEB_FOLDER="web-folder/"

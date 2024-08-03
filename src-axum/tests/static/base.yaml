@@ -1,0 +1,12 @@
+application:
+  port: 8000
+  host: 0.0.0.0
+  hmac_secret: "111111111111111111111111111111111111"
+database:
+  host: "localhost"
+  port: 5432
+  username: "postgres"
+  password: "postgres"
+  database_name: "postgres"
+  require_ssl: false
+# redis_uri: "redis://127.0.0.1:6379"

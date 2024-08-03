@@ -40,6 +40,10 @@ curl
 
 ```
 
+测试
+cargo watch -q -c -w src-axum/src -w configuration -x "run -p src-axum"
+cargo watch -q -c -w src-axum/tests -w configuration -x "test -p src-axum test_config -- --nocapture"
+
 ### Contribute
 
 

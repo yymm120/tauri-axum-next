@@ -1,3 +1,7 @@
+[profile.release]
+strip = true
+lto = true
+
 [workspace]
 resolver = "2"
 members = ["src-axum", "src-tauri"]

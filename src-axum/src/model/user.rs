@@ -3,17 +3,17 @@ use sqlx::prelude::FromRow;
 
 #[derive(Deserialize, Serialize, FromRow)]
 pub struct User {
-    pub id: i32,
-    pub name: String,
-    pub occupation: String,
-    pub email: String,
-    pub phone: String
+    pub id: i64,
+    pub username: String,
+    pub occupation: Option<String>,
+    pub email: Option<String>,
+    pub phone: Option<String>
 }
 
 #[derive(Deserialize, Serialize)]
 pub struct UserInfo {
-    pub name: String,
-    pub occupation: String,
-    pub email: String,
-    pub phone: String
+    pub username: String,
+    pub occupation: Option<String>,
+    pub email: Option<String>,
+    pub phone: Option<String>
 }
