@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: apt 
-        run: apt install sudo
+        run: apt update && apt install sudo
       - uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: libwebkit2gtk-4.0-dev build-essential file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
